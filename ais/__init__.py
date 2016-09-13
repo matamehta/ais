@@ -6,6 +6,8 @@ from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
 
+__version__ = '1.0.0'
+
 # Create app instance
 app = Flask(__name__, instance_relative_config=True)
 
