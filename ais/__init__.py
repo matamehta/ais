@@ -2,9 +2,7 @@ from flask import Flask
 from flask_cachecontrol import FlaskCacheControl
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from flask_script import Manager
-from flask_migrate import Migrate, MigrateCommand
-
+from flask_migrate import Migrate
 
 __version__ = '1.0.0'
 
@@ -34,14 +32,6 @@ if app.config.get('SENTRY_DSN', None):
 
 # Init database extension
 app_db = SQLAlchemy(app)
-
-# Init manager and register commands
-manager = Manager(app)
-manager.add_command('db', MigrateCommand)
-
-# Import engine manager here to avoid circular imports
-from ais.engine.manage import manager as engine_manager
-manager.add_command('engine', engine_manager)
 
 # Init migration extension
 migrate = Migrate(app, app_db)
