@@ -22,11 +22,11 @@ class StreetSegment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     seg_id = db.Column(db.Integer)
     street_code = db.Column(db.Integer)
-    street_predir = db.Column(db.Text)
-    street_name = db.Column(db.Text)
-    street_suffix = db.Column(db.Text)
-    street_postdir = db.Column(db.Text)
-    street_full = db.Column(db.Text)
+    street_predir = db.Column(db.Text, nullable=False)
+    street_name = db.Column(db.Text, nullable=False)
+    street_suffix = db.Column(db.Text, nullable=False)
+    street_postdir = db.Column(db.Text, nullable=False)
+    street_full = db.Column(db.Text, nullable=False)
     left_from = db.Column(db.Integer)
     left_to = db.Column(db.Integer)
     right_from = db.Column(db.Integer)
@@ -46,11 +46,11 @@ class StreetSegment(db.Model):
 class StreetAlias(db.Model):
     """Alternate name for a street segment."""
     id = db.Column(db.Integer, primary_key=True)
-    street_predir = db.Column(db.Text)
-    street_name = db.Column(db.Text)
-    street_suffix = db.Column(db.Text)
-    street_postdir = db.Column(db.Text)
-    street_full = db.Column(db.Text)
+    street_predir = db.Column(db.Text, nullable=False)
+    street_name = db.Column(db.Text, nullable=False)
+    street_suffix = db.Column(db.Text, nullable=False)
+    street_postdir = db.Column(db.Text, nullable=False)
+    street_full = db.Column(db.Text, nullable=False)
     seg_id = db.Column(db.Integer)
 
     # street_segment = db.relationship('StreetSegment', back_populates='aliases')
@@ -64,37 +64,37 @@ class PwdParcel(db.Model):
     """A land parcel per PWD."""
     id = db.Column(db.Integer, primary_key=True)
     parcel_id = db.Column(db.Integer)
-    street_address = db.Column(db.Text)
+    street_address = db.Column(db.Text, nullable=False)
     address_low = db.Column(db.Integer)
-    address_low_suffix = db.Column(db.Text)
-    address_low_frac = db.Column(db.Text)
+    address_low_suffix = db.Column(db.Text, nullable=False)
+    address_low_frac = db.Column(db.Text, nullable=False)
     address_high = db.Column(db.Integer)
-    street_predir = db.Column(db.Text)
-    street_name = db.Column(db.Text)
-    street_suffix = db.Column(db.Text)
-    street_postdir = db.Column(db.Text)
-    unit_type = db.Column(db.Text)
-    unit_num = db.Column(db.Text)
-    street_full = db.Column(db.Text)
+    street_predir = db.Column(db.Text, nullable=False)
+    street_name = db.Column(db.Text, nullable=False)
+    street_suffix = db.Column(db.Text, nullable=False)
+    street_postdir = db.Column(db.Text, nullable=False)
+    unit_type = db.Column(db.Text, nullable=False)
+    unit_num = db.Column(db.Text, nullable=False)
+    street_full = db.Column(db.Text, nullable=False)
     geom = db.Column(Geometry(geometry_type='MULTIPOLYGON', srid=ENGINE_SRID))
 
 class DorParcel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    parcel_id = db.Column(db.Text)
-    street_address = db.Column(db.Text)
+    parcel_id = db.Column(db.Text, nullable=False)
+    street_address = db.Column(db.Text, nullable=False)
     address_low = db.Column(db.Integer)
-    address_low_suffix = db.Column(db.Text)
-    address_low_frac = db.Column(db.Text)
+    address_low_suffix = db.Column(db.Text, nullable=False)
+    address_low_frac = db.Column(db.Text, nullable=False)
     address_high = db.Column(db.Integer)
-    street_predir = db.Column(db.Text)
-    street_name = db.Column(db.Text)
-    street_suffix = db.Column(db.Text)
-    street_postdir = db.Column(db.Text)
-    unit_type = db.Column(db.Text)
-    unit_num = db.Column(db.Text)
-    street_full = db.Column(db.Text)
+    street_predir = db.Column(db.Text, nullable=False)
+    street_name = db.Column(db.Text, nullable=False)
+    street_suffix = db.Column(db.Text, nullable=False)
+    street_postdir = db.Column(db.Text, nullable=False)
+    unit_type = db.Column(db.Text, nullable=False)
+    unit_num = db.Column(db.Text, nullable=False)
+    street_full = db.Column(db.Text, nullable=False)
     source_object_id = db.Column(db.Integer)
-    source_address = db.Column(db.Text)
+    source_address = db.Column(db.Text, nullable=False)
     geom = db.Column(Geometry(geometry_type='MULTIPOLYGON', srid=ENGINE_SRID))
 
 
@@ -104,22 +104,22 @@ class DorParcel(db.Model):
 
 class OpaProperty(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    account_num = db.Column(db.Text)
-    street_address = db.Column(db.Text)
+    account_num = db.Column(db.Text, nullable=False)
+    street_address = db.Column(db.Text, nullable=False)
     address_low = db.Column(db.Integer)
-    address_low_suffix = db.Column(db.Text)
-    address_low_frac = db.Column(db.Text)
+    address_low_suffix = db.Column(db.Text, nullable=False)
+    address_low_frac = db.Column(db.Text, nullable=False)
     address_high = db.Column(db.Integer)
-    street_predir = db.Column(db.Text)
-    street_name = db.Column(db.Text)
-    street_suffix = db.Column(db.Text)
-    street_postdir = db.Column(db.Text)
-    unit_type = db.Column(db.Text)
-    unit_num = db.Column(db.Text)
-    street_full = db.Column(db.Text)
-    source_address = db.Column(db.Text)
-    tencode = db.Column(db.Text)
-    owners = db.Column(db.Text)
+    street_predir = db.Column(db.Text, nullable=False)
+    street_name = db.Column(db.Text, nullable=False)
+    street_suffix = db.Column(db.Text, nullable=False)
+    street_postdir = db.Column(db.Text, nullable=False)
+    unit_type = db.Column(db.Text, nullable=False)
+    unit_num = db.Column(db.Text, nullable=False)
+    street_full = db.Column(db.Text, nullable=False)
+    source_address = db.Column(db.Text, nullable=False)
+    tencode = db.Column(db.Text, nullable=False)
+    owners = db.Column(db.Text, nullable=False)
 
 
 #############
@@ -166,18 +166,18 @@ class Address(db.Model):
     query_class = AddressQuery
 
     id = db.Column(db.Integer, primary_key=True)
-    street_address = db.Column(db.Text)
+    street_address = db.Column(db.Text, nullable=False)
     address_low = db.Column(db.Integer)
-    address_low_suffix = db.Column(db.Text)
-    address_low_frac = db.Column(db.Text)
+    address_low_suffix = db.Column(db.Text, nullable=False)
+    address_low_frac = db.Column(db.Text, nullable=False)
     address_high = db.Column(db.Integer)
-    street_predir = db.Column(db.Text)
-    street_name = db.Column(db.Text)
-    street_suffix = db.Column(db.Text)
-    street_postdir = db.Column(db.Text)
-    unit_type = db.Column(db.Text)
-    unit_num = db.Column(db.Text)
-    street_full = db.Column(db.Text)
+    street_predir = db.Column(db.Text, nullable=False)
+    street_name = db.Column(db.Text, nullable=False)
+    street_suffix = db.Column(db.Text, nullable=False)
+    street_postdir = db.Column(db.Text, nullable=False)
+    unit_type = db.Column(db.Text, nullable=False)
+    unit_num = db.Column(db.Text, nullable=False)
+    street_full = db.Column(db.Text, nullable=False)
 
     geocodes = db.relationship(
         'Geocode',
@@ -429,15 +429,15 @@ class AddressTag(db.Model):
 
     """
     id = db.Column(db.Integer, primary_key=True)
-    street_address = db.Column(db.Text)
-    key = db.Column(db.Text)
-    value = db.Column(db.Text)
+    street_address = db.Column(db.Text, nullable=False)
+    key = db.Column(db.Text, nullable=False)
+    value = db.Column(db.Text, nullable=False)
 
 class SourceAddress(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    source_name = db.Column(db.Text)
-    source_address = db.Column(db.Text)
-    street_address = db.Column(db.Text)
+    source_name = db.Column(db.Text, nullable=False)
+    source_address = db.Column(db.Text, nullable=False)
+    street_address = db.Column(db.Text, nullable=False)
 
 class AddressLink(db.Model):
     """
@@ -450,9 +450,9 @@ class AddressLink(db.Model):
     74-78 LAUREL ST UNIT 6
     """
     id = db.Column(db.Integer, primary_key=True)
-    address_1 = db.Column(db.Text)
-    relationship = db.Column(db.Text)
-    address_2 = db.Column(db.Text)
+    address_1 = db.Column(db.Text, nullable=False)
+    relationship = db.Column(db.Text, nullable=False)
+    address_2 = db.Column(db.Text, nullable=False)
 
 
 #######################
@@ -464,22 +464,22 @@ class AddressStreet(db.Model):
     Stores information about the relationship between addresses and street segs
     '''
     id = db.Column(db.Integer, primary_key=True)
-    street_address = db.Column(db.Text)
+    street_address = db.Column(db.Text, nullable=False)
     seg_id = db.Column(db.Integer)
-    seg_side = db.Column(db.Text)
+    seg_side = db.Column(db.Text, nullable=False)
 
 class AddressParcel(db.Model):
     '''
     Stores information about the relationship between addresses and PWD parcels.
     '''
     id = db.Column(db.Integer, primary_key=True)
-    street_address = db.Column(db.Text)
-    parcel_source = db.Column(db.Text)
+    street_address = db.Column(db.Text, nullable=False)
+    parcel_source = db.Column(db.Text, nullable=False)
     # Use AIS primary key because parcels don't have unique ID
     parcel_row_id = db.Column(db.Integer)
     # possible values: base, base_no_suffix, generic_unit,
     # parcel_in_address_range, address_in_parcel_range
-    match_type = db.Column(db.Text)
+    match_type = db.Column(db.Text, nullable=False)
 
 class AddressProperty(db.Model):
     '''
@@ -487,18 +487,18 @@ class AddressProperty(db.Model):
     properties.
     '''
     id = db.Column(db.Integer, primary_key=True)
-    street_address = db.Column(db.Text) #, db.ForeignKey('address.street_address'))
-    opa_account_num = db.Column(db.Text) #, db.ForeignKey('opa_property.account_num'))
-    match_type = db.Column(db.Text)
+    street_address = db.Column(db.Text, nullable=False) #, db.ForeignKey('address.street_address'))
+    opa_account_num = db.Column(db.Text, nullable=False) #, db.ForeignKey('opa_property.account_num'))
+    match_type = db.Column(db.Text, nullable=False)
 
 class AddressZip(db.Model):
     '''
     Stores information about the relationship between addresses and ZIP ranges.
     '''
     id = db.Column(db.Integer, primary_key=True)
-    street_address = db.Column(db.Text)
-    usps_id = db.Column(db.Text)
-    match_type = db.Column(db.Text)
+    street_address = db.Column(db.Text, nullable=False)
+    usps_id = db.Column(db.Text, nullable=False)
+    match_type = db.Column(db.Text, nullable=False)
 
     zip_range = db.relationship(
         'ZipRange',
@@ -525,8 +525,8 @@ class Geocode(db.Model):
 
     """
     id = db.Column(db.Integer, primary_key=True)
-    street_address = db.Column(db.Text)
-    geocode_type = db.Column(db.Text)     # parcel, curb, street
+    street_address = db.Column(db.Text, nullable=False)
+    geocode_type = db.Column(db.Text, nullable=False)     # parcel, curb, street
     geom = db.Column(Geometry(geometry_type='POINT', srid=ENGINE_SRID))
 
 class Curb(db.Model):
@@ -536,9 +536,9 @@ class Curb(db.Model):
 
 class ParcelCurb(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    parcel_source = db.Column(db.Text)
+    parcel_source = db.Column(db.Text, nullable=False)
     # Use AIS primary key because parcels don't have unique ID
-    parcel_row_id = db.Column(db.Text)
+    parcel_row_id = db.Column(db.Text, nullable=False)
     curb_id = db.Column(db.Integer)
 
 
@@ -548,15 +548,15 @@ class ParcelCurb(db.Model):
 
 class ServiceAreaLayer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    layer_id = db.Column(db.Text)
-    name = db.Column(db.Text)
-    description = db.Column(db.Text)
+    layer_id = db.Column(db.Text, nullable=False)
+    name = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text, nullable=False)
 
 class ServiceAreaPolygon(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    layer_id = db.Column(db.Text)
+    layer_id = db.Column(db.Text, nullable=False)
     source_object_id = db.Column(db.Integer)  # The object ID in the source dataset
-    value = db.Column(db.Text)
+    value = db.Column(db.Text, nullable=False)
     geom = db.Column(Geometry(geometry_type='MULTIPOLYGON', srid=ENGINE_SRID))
 
     layer = db.relationship(
@@ -571,10 +571,10 @@ class ServiceAreaLineSingle(db.Model):
     A service area boundary line with a single value for right and left sides.
     '''
     id = db.Column(db.Integer, primary_key=True)
-    layer_id = db.Column(db.Text)
+    layer_id = db.Column(db.Text, nullable=False)
     source_object_id = db.Column(db.Integer)  # The object ID in the source dataset
     seg_id = db.Column(db.Integer)
-    value = db.Column(db.Text)
+    value = db.Column(db.Text, nullable=False)
 
 class ServiceAreaLineDual(db.Model):
     '''
@@ -582,11 +582,11 @@ class ServiceAreaLineDual(db.Model):
     sides.
     '''
     id = db.Column(db.Integer, primary_key=True)
-    layer_id = db.Column(db.Text)
+    layer_id = db.Column(db.Text, nullable=False)
     source_object_id = db.Column(db.Integer)  # The object ID in the source dataset
     seg_id = db.Column(db.Integer)
-    left_value = db.Column(db.Text)
-    right_value = db.Column(db.Text)
+    left_value = db.Column(db.Text, nullable=False)
+    right_value = db.Column(db.Text, nullable=False)
 
 class ServiceAreaDiff(db.Model):
     '''
@@ -594,10 +594,10 @@ class ServiceAreaDiff(db.Model):
     AIS and ULRS. One point per difference.
     '''
     id = db.Column(db.Integer, primary_key=True)
-    street_address = db.Column(db.Text)
-    layer_id = db.Column(db.Text)
-    ais_value = db.Column(db.Text)
-    ulrs_value = db.Column(db.Text)
+    street_address = db.Column(db.Text, nullable=False)
+    layer_id = db.Column(db.Text, nullable=False)
+    ais_value = db.Column(db.Text, nullable=False)
+    ulrs_value = db.Column(db.Text, nullable=False)
     distance = db.Column(db.Float)
     geom = db.Column(Geometry(geometry_type='POINT', srid=ENGINE_SRID))
 
@@ -610,20 +610,20 @@ class ZipRange(db.Model):
     This is essentially a direct copy of the USPS ZIP+4 table.
     '''
     id = db.Column(db.Integer, primary_key=True)
-    usps_id = db.Column(db.Text)
+    usps_id = db.Column(db.Text, nullable=False)
     address_low = db.Column(db.Integer)
     address_high = db.Column(db.Integer)
-    address_oeb = db.Column(db.Text)
-    street_predir = db.Column(db.Text)
-    street_name = db.Column(db.Text)
-    street_suffix = db.Column(db.Text)
-    street_postdir = db.Column(db.Text)
-    unit_type = db.Column(db.Text)
-    unit_low = db.Column(db.Text)
-    unit_high = db.Column(db.Text)
-    unit_oeb = db.Column(db.Text)
-    zip_code = db.Column(db.Text)
-    zip_4 = db.Column(db.Text)
+    address_oeb = db.Column(db.Text, nullable=False)
+    street_predir = db.Column(db.Text, nullable=False)
+    street_name = db.Column(db.Text, nullable=False)
+    street_suffix = db.Column(db.Text, nullable=False)
+    street_postdir = db.Column(db.Text, nullable=False)
+    unit_type = db.Column(db.Text, nullable=False)
+    unit_low = db.Column(db.Text, nullable=False)
+    unit_high = db.Column(db.Text, nullable=False)
+    unit_oeb = db.Column(db.Text, nullable=False)
+    zip_code = db.Column(db.Text, nullable=False)
+    zip_4 = db.Column(db.Text, nullable=False)
 
 
 ############
@@ -767,36 +767,36 @@ class AddressSummary(db.Model):
     query_class = AddressSummaryQuery
 
     id = db.Column(db.Integer, primary_key=True)
-    street_address = db.Column(db.Text)
+    street_address = db.Column(db.Text, nullable=False)
     address_low = db.Column(db.Integer)
-    address_low_suffix = db.Column(db.Text)
-    address_low_frac = db.Column(db.Text)
+    address_low_suffix = db.Column(db.Text, nullable=False)
+    address_low_frac = db.Column(db.Text, nullable=False)
     address_high = db.Column(db.Integer)
-    street_predir = db.Column(db.Text)
-    street_name = db.Column(db.Text)
-    street_suffix = db.Column(db.Text)
-    street_postdir = db.Column(db.Text)
-    unit_type = db.Column(db.Text)
-    unit_num = db.Column(db.Text)
-    street_full = db.Column(db.Text)
-    zip_code = db.Column(db.Text)
-    zip_4 = db.Column(db.Text)
+    street_predir = db.Column(db.Text, nullable=False)
+    street_name = db.Column(db.Text, nullable=False)
+    street_suffix = db.Column(db.Text, nullable=False)
+    street_postdir = db.Column(db.Text, nullable=False)
+    unit_type = db.Column(db.Text, nullable=False)
+    unit_num = db.Column(db.Text, nullable=False)
+    street_full = db.Column(db.Text, nullable=False)
+    zip_code = db.Column(db.Text, nullable=False)
+    zip_4 = db.Column(db.Text, nullable=False)
 
     # Foreign keys
     seg_id = db.Column(db.Integer)
-    seg_side = db.Column(db.Text)
-    pwd_parcel_id = db.Column(db.Text)
-    dor_parcel_id = db.Column(db.Text)
-    opa_account_num = db.Column(db.Text)
-    opa_owners = db.Column(db.Text)
-    opa_address = db.Column(db.Text)
-    info_residents = db.Column(db.Text)
-    info_companies = db.Column(db.Text)
-    pwd_account_nums = db.Column(db.Text)
-    li_address_key = db.Column(db.Text)
-    voters = db.Column(db.Text)
+    seg_side = db.Column(db.Text, nullable=False)
+    pwd_parcel_id = db.Column(db.Text, nullable=False)
+    dor_parcel_id = db.Column(db.Text, nullable=False)
+    opa_account_num = db.Column(db.Text, nullable=False)
+    opa_owners = db.Column(db.Text, nullable=False)
+    opa_address = db.Column(db.Text, nullable=False)
+    info_residents = db.Column(db.Text, nullable=False)
+    info_companies = db.Column(db.Text, nullable=False)
+    pwd_account_nums = db.Column(db.Text, nullable=False)
+    li_address_key = db.Column(db.Text, nullable=False)
+    voters = db.Column(db.Text, nullable=False)
 
-    geocode_type = db.Column(db.Text)
+    geocode_type = db.Column(db.Text, nullable=False)
     geocode_x = db.Column(db.Float)
     geocode_y = db.Column(db.Float)
 
@@ -867,51 +867,51 @@ class DorParcelError(db.Model):
     # Source fields
     id = db.Column(db.Integer, primary_key=True)
     objectid = db.Column(db.Integer)
-    mapreg = db.Column(db.Text)
+    mapreg = db.Column(db.Text, nullable=False)
     stcod = db.Column(db.Integer)
     house = db.Column(db.Integer)
-    suf = db.Column(db.Text)
-    stex = db.Column(db.Text)
-    stdir = db.Column(db.Text)
-    stnam = db.Column(db.Text)
-    stdes = db.Column(db.Text)
-    stdessuf = db.Column(db.Text)
-    unit = db.Column(db.Text)
+    suf = db.Column(db.Text, nullable=False)
+    stex = db.Column(db.Text, nullable=False)
+    stdir = db.Column(db.Text, nullable=False)
+    stnam = db.Column(db.Text, nullable=False)
+    stdes = db.Column(db.Text, nullable=False)
+    stdessuf = db.Column(db.Text, nullable=False)
+    unit = db.Column(db.Text, nullable=False)
 
     # Error fields
-    level = db.Column(db.Text)
-    reason = db.Column(db.Text)
-    notes = db.Column(db.Text)
+    level = db.Column(db.Text, nullable=False)
+    reason = db.Column(db.Text, nullable=False)
+    notes = db.Column(db.Text, nullable=False)
 
 class DorParcelErrorPolygon(db.Model):
     # Source fields
     id = db.Column(db.Integer, primary_key=True)
     objectid = db.Column(db.Integer)
-    mapreg = db.Column(db.Text)
+    mapreg = db.Column(db.Text, nullable=False)
     stcod = db.Column(db.Integer)
     house = db.Column(db.Integer)
-    suf = db.Column(db.Text)
-    stex = db.Column(db.Text)
-    stdir = db.Column(db.Text)
-    stnam = db.Column(db.Text)
-    stdes = db.Column(db.Text)
-    stdessuf = db.Column(db.Text)
-    unit = db.Column(db.Text)
+    suf = db.Column(db.Text, nullable=False)
+    stex = db.Column(db.Text, nullable=False)
+    stdir = db.Column(db.Text, nullable=False)
+    stnam = db.Column(db.Text, nullable=False)
+    stdes = db.Column(db.Text, nullable=False)
+    stdessuf = db.Column(db.Text, nullable=False)
+    unit = db.Column(db.Text, nullable=False)
     shape = db.Column(Geometry(geometry_type='MULTIPOLYGON', srid=ENGINE_SRID))
 
     # Error fields
-    reasons = db.Column(db.Text)
+    reasons = db.Column(db.Text, nullable=False)
     reason_count = db.Column(db.Integer)
-    notes = db.Column(db.Text)
+    notes = db.Column(db.Text, nullable=False)
 
 class AddressError(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    source_name = db.Column(db.Text)
-    source_address = db.Column(db.Text)
-    street_address = db.Column(db.Text)
-    level = db.Column(db.Text)
-    reason = db.Column(db.Text)
-    notes = db.Column(db.Text)
+    source_name = db.Column(db.Text, nullable=False)
+    source_address = db.Column(db.Text, nullable=False)
+    street_address = db.Column(db.Text, nullable=False)
+    level = db.Column(db.Text, nullable=False)
+    reason = db.Column(db.Text, nullable=False)
+    notes = db.Column(db.Text, nullable=False)
 
 class MultipleSegLine(db.Model):
     '''
@@ -919,8 +919,8 @@ class MultipleSegLine(db.Model):
     more than one street seg.
     '''
     id = db.Column(db.Integer, primary_key=True)
-    street_address = db.Column(db.Text)
-    parent_address = db.Column(db.Text)
+    street_address = db.Column(db.Text, nullable=False)
+    parent_address = db.Column(db.Text, nullable=False)
     seg_id = db.Column(db.Integer)
-    parcel_source = db.Column(db.Text)
+    parcel_source = db.Column(db.Text, nullable=False)
     geom = db.Column(Geometry(geometry_type='LINESTRING', srid=ENGINE_SRID))
