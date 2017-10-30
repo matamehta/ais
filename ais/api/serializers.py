@@ -271,7 +271,7 @@ class AddressJsonSerializer (GeoJSONSerializer):
             else:
                 sa_data = self.sa_data
             # if self.metadata['search_type'] == 'address':
-            if self.metadata['search_type'] in ('address', 'street'):
+            if self.metadata['search_type'] in ('address', 'street', 'landmark'):
                 match_type = self.get_address_response_relationships(address=address, ref_addr=self.ref_addr) if not self.estimated else 'unmatched'
             else:
                 match_type_key = {
@@ -582,7 +582,6 @@ class AddressTagSerializer():
         data.update(self.metadata)
         #print(self.tag_data)
         data_comps = self.transform_tag_data(data, self.tag_data)
-        #print(data_comps)
         for key, val in data_comps[0].items():
             key_name = tag_field_map[key]
             data['properties'][key_name] = val

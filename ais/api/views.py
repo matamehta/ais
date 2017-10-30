@@ -348,7 +348,7 @@ def addresses(query):
         strict_filters.update(dict(unit_type=unit_type or '', ))
 
     # if search_type != 'address' or low_num is None:
-    if search_type not in ('address', 'street') or low_num is None:
+    if search_type not in ('address', 'street', 'landmark') or low_num is None:
         error = json_error(404, 'Not a valid address.',
                            {'query': query, 'normalized': normalized_address,'search_type': search_type})
         return json_response(response=error, status=404)
@@ -1155,6 +1155,7 @@ def search(query):
         'latlon': reverse_geocode,
         'stateplane': reverse_geocode,
         'street': addresses,
+        'landmark': addresses,
     }
     try:
         parsed = PassyunkParser().parse(query)
